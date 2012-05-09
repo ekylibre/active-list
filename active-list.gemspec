@@ -21,5 +21,6 @@ Gem::Specification.new do |s|
   s.send(add_runtime_dependency, "rails", [">= 3.1"])
   s.send(add_runtime_dependency, "compass-rails", [">= 1"])
   s.send(add_runtime_dependency, "fastercsv", [">= 1.5"])
+  s.send(add_runtime_dependency, "i18n-complements", [">= 0"])
 end
 
