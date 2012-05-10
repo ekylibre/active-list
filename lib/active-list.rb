@@ -1,3 +1,4 @@
+require 'fastercsv'
 require 'csv'
 require 'action_dispatch'
 require 'rails'

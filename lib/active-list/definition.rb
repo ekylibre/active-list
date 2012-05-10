@@ -27,6 +27,10 @@ module List
       return id
     end
 
+    def model_columns
+      @model.columns
+    end
+
     def sortable_columns
       @columns.select{|c| c.sortable?}
     end
@@ -40,7 +44,7 @@ module List
     end
 
     def load_default_columns
-      for column in @model.columns
+      for column in self.model_columns
         reflections = @model.reflections.values.select{|r| r.macro == :belongs_to and r.foreign_key.to_s == column.name.to_s}
         if reflections.size == 1
           reflection = reflections.first

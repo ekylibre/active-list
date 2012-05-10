@@ -4,7 +4,7 @@ module List
 
     # Retrieves all columns in database
     def table_columns
-      cols = @model.columns.collect{|c| c.name}
+      cols = self.model_columns.collect{|c| c.name}
       @columns.select{|c| c.is_a? DataColumn and cols.include? c.name.to_s}
     end
 

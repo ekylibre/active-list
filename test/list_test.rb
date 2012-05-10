@@ -1,9 +1,9 @@
-require 'helper'
+require 'test_helper'
 
 class InvalidRenderer
 end
 
-class TestList < Test::Unit::TestCase
+class ListTest < ActiveSupport::TestCase
   # include AppMockHelper
 
   def test_add_renderer

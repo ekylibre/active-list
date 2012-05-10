@@ -1,6 +1,6 @@
-require 'helper'
+require 'test_helper'
 
-class TestTable < Test::Unit::TestCase
+class TableTest < ActiveSupport::TestCase
   # include AppMockHelper
   # mock_app
 

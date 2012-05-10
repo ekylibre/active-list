@@ -1,6 +1,6 @@
-require 'helper'
+require 'test_helper'
 
-class TestCodeGeneration < Test::Unit::TestCase
+class CodeGenerationTest < ActiveSupport::TestCase
   #include AppMockHelper
   #mock_app
 

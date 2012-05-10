@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    active-list (0.0.1)
+    active-list (4.0.0)
       compass-rails (>= 1)
       fastercsv (>= 1.5)
       i18n-complements
