@@ -1,7 +1,9 @@
+require 'active_support/core_ext/module/attribute_accessors'
+
 module List
 
   mattr_reader :exporters
-  @@exporters = HashWithIndifferentAccess.new
+  @@exporters = {}
 
   def self.register_exporter(name, exporter)
     raise ArgumentError.new("List::Exporter expected (got #{exporter.name}/#{exporter.ancestors.inspect})") unless exporter.ancestors.include? List::Exporter
@@ -64,6 +66,6 @@ module List
 end
 
 
-require "list/exporters/open_document_spreadsheet_exporter"
-require "list/exporters/csv_exporter"
-require "list/exporters/excel_csv_exporter"
+require "active-list/exporters/open_document_spreadsheet_exporter"
+require "active-list/exporters/csv_exporter"
+require "active-list/exporters/excel_csv_exporter"

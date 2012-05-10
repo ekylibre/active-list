@@ -5,9 +5,9 @@ module List
     
     @@current_id = 0
 
-    def initialize(name, model, options)
+    def initialize(name, model = nil, options = {})
       @name    = name
-      @model   = model
+      @model   = model || name.to_s.classify.constantize
       @options = options
       @paginate = !(@options[:pagination]==:none || @options[:paginate].is_a?(FalseClass))
       @options[:renderer] ||= :simple_renderer
@@ -39,6 +39,20 @@ module List
       @paginate
     end
 
+    def load_default_columns
+      for column in @model.columns
+        reflections = @model.reflections.values.select{|r| r.macro == :belongs_to and r.foreign_key.to_s == column.name.to_s}
+        if reflections.size == 1
+          reflection = reflections.first
+          columns = reflection.class_name.constantize.columns.collect{ |c| c.name.to_s }
+          self.column([:label, :name, :code, :number].detect{ |l| columns.include?(l.to_s) }, :through => reflection.name, :url => true)
+        else
+          self.column(column.name)
+        end
+      end
+      return true
+    end
+
   end
 
   
@@ -50,7 +64,7 @@ module List
       @table   = table
       @name    = name
       @options = options
-      @column  = @table.model.columns_hash[@name.to_s]
+      @column  = @table.model.columns.detect{|c| c.name.to_s == @name.to_s }
       @id = @table.new_id
     end
 
@@ -80,6 +94,6 @@ module List
 
 end
 
-require "list/columns/data_column"
-require "list/columns/action_column"
-require "list/columns/field_column"
+require "active-list/columns/data_column"
+require "active-list/columns/action_column"
+require "active-list/columns/field_column"

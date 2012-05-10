@@ -1,3 +1,5 @@
+require 'active_support/core_ext/module/attribute_accessors'
+
 module List
 
   mattr_reader :renderers
@@ -14,7 +16,7 @@ module List
       raise NotImplementedError.new("#{self.class.name}#remote_update_code is not implemented.")
     end
 
-    def build_data_code
+    def build_data_code(table)
       raise NotImplementedError.new("#{self.class.name}#build_table_code is not implemented.")
     end
 
@@ -23,4 +25,4 @@ module List
 end
 
 
-require "list/renderers/simple_renderer"
+require "active-list/renderers/simple_renderer"

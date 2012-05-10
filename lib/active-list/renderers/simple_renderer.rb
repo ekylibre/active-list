@@ -41,11 +41,11 @@ module List
       body = columns_to_cells(table, :body, :record=>record)
 
       code  = table.select_data_code
-      code << "body = '<tbody data-total=\"'+#{self.records_variable_name}_count+'\""
+      code << "body = '<tbody data-total=\"'+#{table.records_variable_name}_count.to_s+'\""
       if table.paginate?
-        code << " data-per-page=\"'+#{self.records_variable_name}_limit+'\""
-        code << " data-pages-count=\"'+#{self.records_variable_name}_last+'\""
-        # code << " data-page-label=\"'+#{self.records_variable_name}_limit+'\""
+        code << " data-per-page=\"'+#{table.records_variable_name}_limit.to_s+'\""
+        code << " data-pages-count=\"'+#{table.records_variable_name}_last.to_s+'\""
+        # code << " data-page-label=\"'+#{table.records_variable_name}_limit.to_s+'\""
       end
       code << ">'\n"
       code << "if #{table.records_variable_name}_count > 0\n"
@@ -55,7 +55,7 @@ module List
       code << "    body << content_tag(:tr, (#{body}).html_safe, :class=>'data'#{line_class})\n"
       if table.options[:children].is_a? Symbol
         children = table.options[:children].to_s
-        child_body = columns_to_cells(table, :children, :record=>child, :order=>table.options[:order])
+        child_body = columns_to_cells(table, :children, :record=>child)
         code << "    for #{child} in #{record}.#{children}\n"
         code << "      body << content_tag(:tr, (#{child_body}).html_safe, :class=>'data child '#{line_class})\n"
         code << "    end\n"
@@ -67,7 +67,6 @@ module List
       code << "body << '</tbody>'\n"
       code << "if options[:only] == 'body'\n"
       code << "  return body.html_safe\n"
-      code << "  return\n"
       code << "end\n"
       code << "text = #{header} << #{footer} << body.html_safe\n"
       code << "if block_given?\n"

@@ -1,3 +1,6 @@
+require 'action_controller'
+require 'action_view'
+
 module List
 
   module ActionController
@@ -19,7 +22,12 @@ module List
         options[:view_method_name]       = "_#{self.controller_name}_list_#{name}_tag"
         options[:records_variable_name]  = "@#{name}"
         table = List::Table.new(name, model, options)
-        yield table
+        if block_given?
+          yield table
+        else
+          table.load_default_columns
+        end
+        
         class_eval(table.send(:generate_controller_method_code), __FILE__, __LINE__)
         ActionView::Base.send(:class_eval, table.send(:generate_view_method_code), __FILE__, __LINE__)
       end
@@ -39,8 +47,6 @@ module List
 
 end
 
-ActionController::Base.send(:include, ActionView::Helpers::NumberHelper)
-ActionController::Base.send(:include, List::ActionController)
-ActionView::Base.send(:include, List::ViewsHelper)
-
-
+# # ActionController::Base.send(:include, ActionView::Helpers::NumberHelper)
+# ActionController::Base.send(:include, List::ActionController)
+# ActionView::Base.send(:include, List::ViewsHelper)

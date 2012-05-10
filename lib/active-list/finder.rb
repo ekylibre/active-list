@@ -10,7 +10,7 @@ module List
       unless self.options.keys.include?(:order)
         columns = self.table_columns
         if columns.size > 0
-          self.options[:order] = self.model.connection.quote_column_name(columns[0].name.to_s)
+          self.options[:order] = columns[0].name.to_s # self.model.connection.quote_column_name(columns[0].name.to_s)
         else
           raise ArgumentError.new("Option :order is needed for the list :#{self.name}")
         end
@@ -21,15 +21,17 @@ module List
       query_code << ".select(#{self.select_code})" if self.select_code
       query_code << ".where(#{self.conditions_code})" unless self.options[:conditions].blank?
       query_code << ".joins(#{self.options[:joins].inspect})" unless self.options[:joins].blank?
-      query_code << ".includes(#{self.includes_hash.inspect})"
+      query_code << ".includes(#{self.includes_hash.inspect})" unless self.includes_hash.empty?
 
       code = ""
       code << "#{self.records_variable_name}_count = #{query_code}.count\n"
       if paginate
         code << "#{self.records_variable_name}_limit = (list_params[:per_page]||25).to_i\n"
         code << "#{self.records_variable_name}_page = (list_params[:page]||1).to_i\n"
+        code << "#{self.records_variable_name}_page = 1 if #{self.records_variable_name}_page < 1\n"
         code << "#{self.records_variable_name}_offset = (#{self.records_variable_name}_page-1)*#{self.records_variable_name}_limit\n"
         code << "#{self.records_variable_name}_last = (#{self.records_variable_name}_count.to_f/#{self.records_variable_name}_limit).ceil.to_i\n"
+        code << "#{self.records_variable_name}_last = 1 if #{self.records_variable_name}_last < 1\n"
         code << "return #{self.view_method_name}(options.merge(:page=>1)) if 1 > #{self.records_variable_name}_page or #{self.records_variable_name}_page > #{self.records_variable_name}_last\n"
       end
       code << "#{self.records_variable_name} = #{query_code}"

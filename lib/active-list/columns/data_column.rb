@@ -22,41 +22,20 @@ module List
   class DataColumn < Column
 
     def header_code
-
-#       if @options[:through] and @options[:through].is_a?(Symbol)
-#         reflection = @table.model.reflections[@options[:through]]
-#         raise Exception.new("Unknown reflection :#{@options[:through].to_s} for the ActiveRecord: "+@table.model.to_s) if reflection.nil?
-#         if @options[:label].is_a? String
-#           "::I18n.translate('labels.#{@options[:label].strip}')"
-#         elsif reflection.macro == :has_one or @options[:label] == :column
-#           "#{reflection.class_name}.human_attribute_name('#{@name}')"
-#         else
-#           "#{@table.model.name}.human_attribute_name(#{@options[:through].to_s.inspect})"
-#         end
-#       elsif @options[:through] and @options[:through].is_a?(Array)
-#         model = @table.model
-#         (@options[:through].size-1).times do |x|
-#           model = model.reflections[@options[:through][x]].options[:class_name].constantize
-#         end
-#         reflection = @options[:through][@options[:through].size-1].to_sym
-#         "::I18n.translate('activerecord.attributes.#{model.name.underscore}.#{model.reflections[reflection].foreign_key}')"
-#       else
-#         "#{@table.model.name}.human_attribute_name('#{@name}')"
-#       end
-
       if @options[:label].is_a? String
         "::I18n.translate('labels.#{@options[:label].strip}')"
       elsif through = @options[:through]
         through = [through] unless through.is_a? Array
         model, reflection = @table.model, nil
         for ref in through
-          # raise Exception.new("Polymorphic reflection used in :through option, please use :label to change header.")
-          return "Undefined" if model.nil?
+          unless reflection.nil?
+            model = reflection.class_name.constantize rescue nil
+          end
+          raise Exception.new("Unknown model #{reflection.class_name}") if model.nil?
           reflection = model.reflections[ref]
           raise Exception.new("Unknown reflection :#{ref} (#{through.inspect}) for the ActiveRecord: "+model.name) if reflection.nil?
-          model = reflection.class_name.constantize rescue nil
         end
-        "#{reflection.active_record.name}.human_attribute_name('#{reflection.name}')"
+        "#{model.name}.human_attribute_name('#{reflection.name}')"
       else
         "#{@table.model.name}.human_attribute_name('#{@name}')"
       end

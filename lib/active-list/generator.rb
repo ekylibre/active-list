@@ -1,7 +1,7 @@
 # encoding: UTF-8
-require "list/finder"
-require "list/exporters"
-require "list/renderers"
+require "active-list/finder"
+require "active-list/exporters"
+require "active-list/renderers"
 
 module List
 
@@ -22,10 +22,6 @@ module List
     def renderer
       List.renderers[@options[:renderer]]
     end
-
-
-    protected
-
     
 
     def generate_controller_method_code
@@ -57,7 +53,7 @@ module List
       code += self.session_initialization_code.gsub(/^/, '  ')
       code += self.renderer.build_table_code(self).gsub(/^/, '  ')
       code += "end\n"
-      code.split("\n").each_with_index{|l, x| puts((x+1).to_s.rjust(4)+": "+l)}
+      # code.split("\n").each_with_index{|l, x| puts((x+1).to_s.rjust(4)+": "+l)}
       return code      
     end
 
@@ -80,7 +76,7 @@ module List
       code += "if (col = {"+self.sortable_columns.collect{|c| "'#{c.id}'=>'#{c.name}'"}.join(', ')+"}[list_params[:sort]])\n"
       code += "  list_params[:dir] ||= 'asc'\n"
       code += "  if list_params[:dir] == 'asc' or list_params[:dir] == 'desc'\n"
-      code += "    order = ActiveRecord::Base.connection.quote_column_name(col)+' '+list_params[:dir]\n"
+      code += "    order = #{@model.name}.connection.quote_column_name(col)+' '+list_params[:dir]\n"
       code += "  end\n"
       code += "end\n"
 
