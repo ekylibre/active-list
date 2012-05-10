@@ -1,0 +1,45 @@
+= ActiveList
+
+ActiveList is a simple list widget. It permits to create a controller 
+method and view helper to displays lists.
+
+The first need was to have a simple component to build easily HTML 
+tables. No scaffolds, only listings.
+
+ActiveList works only with Rails ≥ 3.1.
+
+== Getting started
+
+First, the JS code must be added to the pipeline in app/assets/javascripts/application.js:
+
+    //= require list.jquery
+
+And get a better, you can add in app/assets/stylesheets/application.css:
+
+    *= require list
+
+The simple way to use it is to write in our controller:
+  
+    class PeopleController < ApplicationController
+      list
+
+      def index
+      end
+    end
+
+And in the view app/views/people/index.html.erb:
+
+    <%=list-%>
+
+== Build Status {<img src="https://secure.travis-ci.org/burisu/active-list.png"/>}[http://travis-ci.org/burisu/active-list]
+
+== Todos
+* Provides styles as @mixins for a better customization
+* Adds support for Prototype JS
+* Adds implicit exporters JSON, XML,
+
+== License
+
+ActiveList is released under the MIT license:
+
+* http://www.opensource.org/licenses/MIT

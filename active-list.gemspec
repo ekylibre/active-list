@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary = "Easy tables in Rails app"
   s.description = "Generates action methods to"+
     " provide clean tables."
-  s.extra_rdoc_files = [ "LICENSE", "README" ]
+  s.extra_rdoc_files = [ "LICENSE", "README.rdoc" ]
   s.test_files = `git ls-files test/test_*.rb`.split("\n") 
   exclusions = [ "#{s.name}.gemspec", ".travis.yml", ".gitignore", "Gemfile", "Gemfile.lock", "Rakefile", "lib/assets/images/active-list.svg"]
   s.files = `git ls-files`.split("\n").delete_if{|f| exclusions.include?(f)}
