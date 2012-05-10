@@ -32,7 +32,4 @@ And in the view app/views/people/index.html.erb:
 
 More options
 ------------
-
-
-
-
+Columns are configurables.
