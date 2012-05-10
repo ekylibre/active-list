@@ -9,10 +9,11 @@ Install in Rails >= 3.1
 
 In app/assets/stylesheets/application.css adds:
 
-  *= require list
+    *= require list
 
 In app/assets/javascripts/application.js adds:
-  //= require list.jquery
+
+    //= require list.jquery
 
 
 Use in Rails
@@ -20,15 +21,16 @@ Use in Rails
 
 The simple way to use it is to writre in our controller:
   
-  class PeopleController < ApplicationController
-    list
+    class PeopleController < ApplicationController
+      list
 
-    def index
+      def index
+      end
     end
-  end
 
 And in the view app/views/people/index.html.erb:
-  <%=list-%>
+
+    <%=list-%>
 
 More options
 ------------
