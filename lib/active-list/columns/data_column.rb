@@ -74,9 +74,9 @@ module List
           currency = "RECORD.#{currency}" if currency.is_a?(Symbol)
           raise Exception.new("Option :currency is not valid. Hash, Symbol or true/false") unless currency.is_a?(String)
         end
-        datum = "(#{datum}.nil? ? '' : I18n.localize(#{datum}#{', :currency=>'+currency.gsub(/RECORD/, record) if currency}))"
+        datum = "(#{datum}.nil? ? '' : ::I18n.localize(#{datum}#{', :currency=>'+currency.gsub(/RECORD/, record) if currency}))"
       elsif @name.to_s.match(/(^|\_)currency$/) and self.datatype == :string and self.limit == 3
-        datum = "(#{datum}.nil? ? '' : Numisma.currencies[#{datum}].label)"
+        datum = "(#{datum}.nil? ? '' : ::I18n.currency_label(#{datum}))"
       elsif @name==:country and  self.datatype == :string and self.limit == 2
         datum = "(#{datum}.nil? ? '' : ::I18n.translate('countries.'+#{datum}))"
       elsif @name==:language and self.datatype == :string and self.limit <= 8

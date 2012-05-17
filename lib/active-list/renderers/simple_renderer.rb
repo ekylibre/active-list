@@ -111,11 +111,9 @@ module List
                 currency = "RECORD.#{currency}" if currency.is_a?(Symbol)
                 raise Exception.new("Option :currency is not valid. Hash, Symbol or true/false") unless currency.is_a?(String)
                 currency.gsub!(/RECORD/, record)
-                # datum = "(#{datum}.nil? ? '' : number_to_money(#{datum}, #{currency}))"
-                datum = "(#{datum}.nil? ? '' : I18n.localize(#{datum}, :currency => #{currency}))"
+                datum = "(#{datum}.nil? ? '' : ::I18n.localize(#{datum}, :currency => #{currency}))"
               elsif column.datatype == :decimal
-                # datum = "(#{datum}.nil? ? '' : number_to_currency(#{datum}, :separator=>',', :delimiter=>'&#160;', :unit=>'', :precision=>#{column.options[:precision]||2})).gsub(//)"
-                datum = "(#{datum}.nil? ? '' : I18n.localize(#{datum}))"
+                datum = "(#{datum}.nil? ? '' : ::I18n.localize(#{datum}))"
               end
               if column.options[:url].is_a?(TrueClass) and nature==:body
                 datum = "(#{datum}.blank? ? '' : link_to(#{datum}, {:controller=>:#{column.class_name.underscore.pluralize}, :action=>:show, :id=>#{column.record_expr(record)+'.id'}}))"
@@ -135,8 +133,8 @@ module List
               elsif column.name==:color
                 style << "background: #'+"+column.datum_code(record)+"+';"
               elsif column.name.to_s.match(/(^|\_)currency$/) and column.datatype == :string and column.limit == 3
-                datum = "(#{datum}.blank? ? '' : Numisma.currencies[#{datum}].label)"
-              elsif column.name==:language and  column.datatype == :string and column.limit <= 8
+                datum = "(#{datum}.blank? ? '' : ::I18n.currency_label(#{datum}))"
+              elsif column.name==:language and column.datatype == :string and column.limit <= 8
                 datum = "(#{datum}.blank? ? '' : ::I18n.translate('languages.'+#{datum}))"
               elsif column.name==:country and  column.datatype == :string and column.limit <= 8
                 datum = "(#{datum}.blank? ? '' : (image_tag('countries/'+#{datum}.to_s+'.png')+' '+::I18n.translate('countries.'+#{datum})).html_safe)"
