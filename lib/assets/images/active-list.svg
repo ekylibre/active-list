@@ -16,7 +16,6 @@
    sodipodi:version="0.32"
    inkscape:version="0.47 r22583"
    version="1.0"
-   inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list-aaaa.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="list.svg"
@@ -439,7 +438,7 @@
        d="M 344,2 L 338.5,7 L 341.25,7 L 344,4.5 L 346.75,7 L 349.5,7 L 344,2 z"
        id="up3"
        sodipodi:nodetypes="ccccccc"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/sort-up.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/sort-up.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <g
@@ -450,7 +449,7 @@
       <rect
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
-         inkscape:export-filename="/home/brice/dev/ekylibre/public/images/buttons/true.png"
+         inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/true.png"
          style="fill:url(#radialGradient3885);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient3093);stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
          id="rect3087"
          width="11"
@@ -460,7 +459,7 @@
       <path
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
-         inkscape:export-filename="/home/brice/dev/ekylibre/public/images/buttons/true.png"
+         inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/true.png"
          d="M 322,-36 L 325,-33 L 330.00006,-38 L 330.00006,-35 L 325,-30 L 322,-33 L 322,-36 z"
          id="path3089"
          style="fill:#1fbf06;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -469,7 +468,7 @@
     <rect
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/Informatique/Developpement/ekylibre/trunk/ekylibre/public/images/buttons/checkbox_true.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/checkbox_true.png"
        style="fill:url(#radialGradient3566);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient3568);stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="use3091"
        width="11"
@@ -484,7 +483,7 @@
       <path
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
-         inkscape:export-filename="/home/brice/dev/ekylibre/trunk/public/templates/tekyla/images/buttons/spreadsheet.png"
+         inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/spreadsheet.png"
          sodipodi:nodetypes="cccccc"
          id="rect3245"
          d="M 242.5,1.4375 L 250,1.4375 L 253.5,4.9375 L 253.5,15.499999 L 242.5,15.499999 L 242.5,1.4375 z"
@@ -509,7 +508,7 @@
     <path
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/trunk/public/themes/tekyla/images/buttons/page.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/page.png"
        sodipodi:nodetypes="cccccc"
        id="pages"
        d="M 258.5,17.437501 L 265.99999,17.437501 L 269.5,20.937501 L 269.5,31.5 L 258.5,31.5 L 258.5,17.437501 z"
@@ -521,7 +520,7 @@
     <path
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/trunk/public/themes/tekyla/images/buttons/page.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/page.png"
        transform="matrix(1.007391,0,0,0.9278885,-24.065671,2.026384)"
        sodipodi:nodetypes="cccc"
        id="path4198"
@@ -530,7 +529,7 @@
     <path
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/trunk/public/themes/tekyla/images/buttons/page.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/page.png"
        sodipodi:nodetypes="cccc"
        id="path4200"
        d="M 266.5,17.437501 L 266.5,20.437501 L 269.5,20.437501 L 266.5,17.437501 z"
@@ -539,7 +538,7 @@
        style="fill:#555555;fill-opacity:1;fill-rule:nonzero;stroke:none"
        d="M 247.12495,-16 L 246.8437,-14.71875 L 246.6562,-13.5 L 245.37495,-13 L 244.4062,-13.78125 L 243.3437,-14.5625 L 241.68745,-13.03125 L 242.43745,-11.9375 L 243.1562,-10.9375 L 242.5937,-9.6875 L 241.3437,-9.53125 L 240.0312,-9.34375 L 240,-7.124999 L 241.28125,-6.84375 L 242.5,-6.65625 L 243,-5.374999 L 242.21875,-4.40625 L 241.4375,-3.34375 L 242.96875,-1.6875 L 244.0625,-2.4375 L 245.0625,-3.15625 L 246.3125,-2.59375 L 246.46875,-1.34375 L 246.65625,-0.03125 L 248.875,0 L 249.15625,-1.28125 L 249.34375,-2.5 L 250.625,-3 L 251.59375,-2.21875 L 252.65625,-1.4375 L 254.3125,-2.96875 L 253.5625,-4.0625 L 252.84375,-5.0625 L 253.40625,-6.3125 L 254.65625,-6.46875 L 255.96875,-6.65625 L 255.99995,-8.874999 L 254.7187,-9.15625 L 253.49995,-9.34375 L 252.99995,-10.625001 L 253.7812,-11.59375 L 254.56245,-12.65625 L 253.0312,-14.3125 L 251.93745,-13.5625 L 250.93745,-12.84375 L 249.68745,-13.40625 L 249.5312,-14.65625 L 249.3437,-15.96875 L 247.12495,-16 z M 247.9687,-11 C 249.62457,-11.01914 250.97965,-9.687137 250.99995,-8.03125 C 251.02025,-6.375363 249.68706,-5.019141 248.0312,-5 C 246.37533,-4.98086 245.02025,-6.312863 244.99995,-7.96875 C 244.97965,-9.624637 246.31284,-10.980858 247.9687,-11 z"
        id="path4226-90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/trunk/public/themes/tekyla/images/buttons/list-start.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/list-start.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
@@ -554,7 +553,7 @@
        sodipodi:nodetypes="ccccccccccccccccccccccc"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/columns.png" />
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/columns.png" />
     <path
        style="fill:url(#linearGradient3743);fill-opacity:1;stroke:none"
        d="M 290,-15 L 297.1875,-15 L 301,-11.5 L 301,-1 L 290,-1 L 290,-15 z"
@@ -569,7 +568,7 @@
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#555555;fill-opacity:1;stroke:none;stroke-width:1.99999988;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Arial;-inkscape-font-specification:Arial"
        d="M 306,-15 L 306,-13 L 318,-13 L 318,-15 L 306,-15 z M 306,-11 L 306,-9 L 318,-9 L 318,-11 L 306,-11 z M 306,-7 L 306,-5 L 318,-5 L 318,-7 L 306,-7 z M 306,-3 L 306,-1 L 318,-1 L 318,-3 L 306,-3 z"
        id="path3691"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/pages.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/pages.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
@@ -579,7 +578,7 @@
        height="14"
        x="321"
        y="-15"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/checked.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/checked.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <use
@@ -605,7 +604,7 @@
        transform="translate(16,0)"
        width="96"
        height="32"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/unchecked.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/unchecked.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <use
@@ -616,7 +615,7 @@
        transform="matrix(1,0,0,-1,0,15.999994)"
        width="96"
        height="32"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/sort-down.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/sort-down.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        style="fill:#555555;fill-opacity:1" />
@@ -630,13 +629,13 @@
        d="M 275,8 L 281.375,0 L 284,0 L 277.625,8 L 284,16 L 281.375,16 L 275,8 z"
        id="path4015-8-4-6-8"
        sodipodi:nodetypes="ccccccc"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/home.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/home.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <g
        id="g3914"
        transform="translate(-1,32)"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/previous-page.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/previous-page.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <path
@@ -665,7 +664,7 @@
     <g
        id="g3958"
        transform="translate(0,32)"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/begin.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/begin.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <use
@@ -679,7 +678,7 @@
       <rect
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
-         inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/home.png"
+         inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/home.png"
          y="-32"
          x="240"
          height="16"
@@ -711,13 +710,13 @@
        transform="matrix(-1,0,0,1,576,0)"
        width="96"
        height="32"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/end.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/end.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/sort.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/sort.png"
        sodipodi:nodetypes="cccc"
        id="path4177"
        d="M 346.375,21.875 L 340.875,26.875 L 351.875,26.875 L 346.375,21.875 z"
@@ -726,7 +725,7 @@
        style="fill:#555555;fill-opacity:1"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/brice/dev/ekylibre/app/assets/images/themes/tekyla/list/sort.png"
+       inkscape:export-filename="/home/brice/dev/active-list/lib/assets/images/icons/sort.png"
        height="32"
        width="96"
        transform="matrix(1,0,0,-1,2.375,35.874994)"

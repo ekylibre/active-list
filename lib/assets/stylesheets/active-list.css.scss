@@ -39,9 +39,9 @@ $list-hover-backgrounds: ("" rgba(255, 255, 255, 0)) (":hover" rgba(209, 218, 25
 }
 
 
-$list-layout: smart;
-@import "themes/tekyla/list/*.png";
-@include all-list-sprites;
+$icons-layout: smart;
+@import "icons/*.png";
+@include all-icons-sprites;
 
 div.list { margin: 0; }
 
@@ -52,7 +52,7 @@ table.list {
   margin: 0;
   tbody, & thead th { border: 1px solid #AAA;}
   th { 
-    background: #DDD inline-image("themes/tekyla/boss-effect.png") center repeat-x;
+    background: #DDD inline-image("boss-effect.png") center repeat-x;
     padding: 0; 
     & > a {
       .text {
@@ -88,9 +88,9 @@ table.list {
           background-position: right center; 
           background-repeat: no-repeat; 
           html[dir="rtl"] & { background-position: left center; padding-left: 12px; }
-          &.nsr  .icon { @include list-sprite(sort); height: 12px;}
-          &.desc .icon { @include list-sprite(sort-down); height: 5px;}
-          &.asc  .icon { @include list-sprite(sort-up); height: 5px}
+          &.nsr  .icon { @include icons-sprite(sort); height: 12px;}
+          &.desc .icon { @include icons-sprite(sort-down); height: 5px;}
+          &.asc  .icon { @include icons-sprite(sort-up); height: 5px}
         }
       }
       &:hover { background-color: #E6EBFB; }
@@ -130,8 +130,8 @@ table.list {
           width: 16px;
           height: 16px;
         }
-        .checkbox-true { @include list-sprite(checked); }
-        .checkbox-false { @include list-sprite(unchecked); }
+        .checkbox-true { @include icons-sprite(checked); }
+        .checkbox-false { @include icons-sprite(unchecked); }
       }
       &.dat { text-align: center; }
       &.web { text-align: center; }
@@ -159,8 +159,8 @@ table.list {
     tr th { 
       clear:both; 
       border:none; 
-      background: #EEEFFA image-url("themes/tekyla/shadow-bottom.png") repeat-x top center !important; 
-      background: rgba(240,242,250,0.7) image-url("themes/tekyla/shadow-bottom.png") repeat-x top center !important;
+      background: #EEEFFA inline-image("shadow-bottom.png") repeat-x top center !important; 
+      background: rgba(240,242,250,0.7) inline-image("shadow-bottom.png") repeat-x top center !important;
       font-weight: normal;  
       div.pagination {
         padding: 4px; 
@@ -204,20 +204,20 @@ table.list {
           padding: 0;
         }
         html[dir="rtl"] & .last-page, html[dir="ltr"] & .first-page { 
-          @include list-sprite(first);
+          @include icons-sprite(first);
         }
         html[dir="rtl"] & .first-page, html[dir="ltr"] & .last-page { 
-          @include list-sprite(last);
+          @include icons-sprite(last);
         }
         html[dir="rtl"] & .next-page, html[dir="ltr"] & .previous-page { 
          /* padding: 2px 4px 2px 10px; */
-          @include list-sprite(previous-page);
-          /* &.disabled { @include list-sprite(previous-disabled);}*/
+          @include icons-sprite(previous-page);
+          /* &.disabled { @include icons-sprite(previous-disabled);}*/
         }
         html[dir="rtl"] & .previous-page, html[dir="ltr"] & .next-page { 
           /*padding: 2px 10px 2px 4px; */
-          @include list-sprite(next-page);
-          /* &.disabled { @include list-sprite(next-disabled);}*/
+          @include icons-sprite(next-page);
+          /* &.disabled { @include icons-sprite(next-disabled);}*/
         }
       }
     }
@@ -247,7 +247,7 @@ table.list {
           width: 16px; 
           height: 16px; 
           @include inline-block;
-          @include list-sprite(start);
+          @include icons-sprite(start);
         }
         .text { display: none; }
       }
@@ -288,12 +288,12 @@ table.list {
               html[dir="rtl"] & { margin-left: 4px; }
             }
 
-            &.pages     .icon { @include list-sprite(pages); }
-            &.export    .icon { @include list-sprite(export); }
-            &.check     .icon { @include list-sprite(check); }
-            &.checked   .icon { @include list-sprite(checked); }
-            &.unchecked .icon { @include list-sprite(unchecked); }
-            &.columns   .icon { @include list-sprite(columns); }
+            &.pages     .icon { @include icons-sprite(pages); }
+            &.export    .icon { @include icons-sprite(export); }
+            &.check     .icon { @include icons-sprite(check); }
+            &.checked   .icon { @include icons-sprite(checked); }
+            &.unchecked .icon { @include icons-sprite(unchecked); }
+            &.columns   .icon { @include icons-sprite(columns); }
           }
           ul { 
             display: none; 
