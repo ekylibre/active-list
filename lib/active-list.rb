@@ -4,7 +4,7 @@ require 'action_dispatch'
 require 'rails'
 # require 'active_support/all'
 
-module List #:nodoc:
+module ActiveList #:nodoc:
   
 
   CSV = (::CSV.const_defined?(:Reader) ? ::FasterCSV : ::CSV).freeze
@@ -15,6 +15,10 @@ module List #:nodoc:
     return v
   end
   VERSION = self.version.freeze
+
+  def self.assets_path
+    File.join(File.dirname(__FILE__), "assets", "images")
+  end
 
 end
 
