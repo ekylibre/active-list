@@ -8,15 +8,15 @@ tables. No scaffolds, only listings.
 
 ActiveList works only with Rails ≥ 3.1.
 
-== Getting started
+== Quick start
 
 First, the JS code must be added to the pipeline in app/assets/javascripts/application.js:
 
-    //= require list.jquery
+    //= require active-list.jquery
 
 And get a better, you can add in app/assets/stylesheets/application.css:
 
-    *= require list
+    *= require active-list
 
 The simple way to use it is to write in our controller:
   

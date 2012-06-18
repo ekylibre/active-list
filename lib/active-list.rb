@@ -2,7 +2,7 @@ require 'fastercsv'
 require 'csv'
 require 'action_dispatch'
 require 'rails'
-# require 'active_support/all'
+require 'compass'
 
 module ActiveList #:nodoc:
   
@@ -20,9 +20,18 @@ module ActiveList #:nodoc:
     File.join(File.dirname(__FILE__), "assets", "images")
   end
 
+  def self.compass_extension_path
+    File.join(File.dirname(__FILE__), "active-list", "compass")
+  end
+
 end
+
+# Compass registration
+Compass::Frameworks.register('active-list', :path => ActiveList.compass_extension_path)
 
 require "active-list/definition"
 require "active-list/generator"
 require "active-list/action_pack"
 require "active-list/rails/engine"
+
+
