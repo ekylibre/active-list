@@ -19,7 +19,7 @@ module List
       record = "r"
       code  = table.select_data_code(:paginate => false)
       code += "ic = Iconv.new('cp1252', 'utf-8')\n"
-      code += "data = List::CSV.generate(:col_sep=>';') do |csv|\n"
+      code += "data = ActiveList::CSV.generate(:col_sep=>';') do |csv|\n"
       code += "  csv << [#{columns_to_array(table, :header, :iconv=>'ic').join(', ')}]\n"
       code += "  for #{record} in #{table.records_variable_name}\n"  
       code += "    csv << [#{columns_to_array(table, :body, :record=>record, :iconv=>'ic').join(', ')}]\n"

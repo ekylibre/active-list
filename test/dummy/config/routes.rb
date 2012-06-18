@@ -1,7 +1,11 @@
 Dummy::Application.routes.draw do
   resources :contacts
 
-  resources :people
+  resources :people do
+    collection do
+      get :list
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
