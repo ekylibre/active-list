@@ -45,7 +45,7 @@ module List
       if table.paginate?
         code << " data-per-page=\"'+#{table.records_variable_name}_limit.to_s+'\""
         code << " data-pages-count=\"'+#{table.records_variable_name}_last.to_s+'\""
-        # code << " data-page-label=\"'+#{table.records_variable_name}_limit.to_s+'\""
+        code << " data-page-label=\"'+I18n.translate('list.pagination.showing_x_to_y_of_total', :x => (#{table.records_variable_name}_offset + 1), :y => (#{table.records_variable_name}_offset+#{table.records_variable_name}_limit), :total => #{table.records_variable_name}_count)+'\""
       end
       code << ">'\n"
       code << "if #{table.records_variable_name}_count > 0\n"

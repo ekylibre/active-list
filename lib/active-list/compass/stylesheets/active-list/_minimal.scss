@@ -8,13 +8,44 @@ table.list {
   width:100%;
   padding:0;
   margin: 0;
+
+  thead { 
+    tr { 
+      th { 
+        border: 1px solid #AAA;
+        padding: 2px;
+        font-weight: bold;
+        vertical-align: middle;
+      }
+    }
+  }
+  tbody { 
+    tr { 
+      td { 
+        border: 1px solid #AAA;
+        padding: 2px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  tfoot { 
+    .pagination { 
+      .paginator { 
+        @include inline-block;
+      }
+    }
+  }
   
-  .spe {
+  th.spe {
+    padding: 0px;
     .list-menu {
       position: relative;
       a { cursor: pointer; }
       .list-menu-start {
         display: block;
+        height: 16px;
+        padding: 2px;
       }
       &:hover {
         .list-menu-start { z-index:5000;  position: relative; top: 0px; }
@@ -26,16 +57,24 @@ table.list {
         top: 20px;
         padding: 1px;
         margin:0;
+        background: white;
+        border: 1px solid #AAA;
+        html[dir="ltr"] & { right: -1px;}
+        html[dir="rtl"] & { left: -1px;}
         li {
           list-style-type: none;
+          width: 25ex;
           position: relative;
           a {
             display: block;
+            padding: 0.3ex;
           }
           ul {
             display: none;
             position: absolute;
-            top: -2px;
+            top: -2px; 
+            html[dir="ltr"] & { right: 25.3ex; }
+            html[dir="rtl"] & { left: 25.3ex; }
             &:hover { display:block; }
           }
           &:hover ul { display:block; }
