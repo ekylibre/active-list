@@ -1,6 +1,6 @@
-module List
+module ActiveList
   
-  class CsvExporter < List::Exporter
+  class CsvExporter < ActiveList::Exporter
 
     def file_extension
       "csv"
@@ -27,4 +27,4 @@ module List
 
 end
 
-List.register_exporter(:csv, List::CsvExporter)
+ActiveList.register_exporter(:csv, ActiveList::CsvExporter)

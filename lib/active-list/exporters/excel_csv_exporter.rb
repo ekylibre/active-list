@@ -3,9 +3,9 @@
 # Register XCSV format unless is already set
 Mime::Type.register("text/csv", :xcsv) unless defined? Mime::XCSV
 
-module List
+module ActiveList
   
-  class ExcelCsvExporter < List::CsvExporter
+  class ExcelCsvExporter < ActiveList::CsvExporter
 
     def file_extension
       "csv"
@@ -33,4 +33,4 @@ module List
 
 end
 
-List.register_exporter(:xcsv, List::ExcelCsvExporter)
+ActiveList.register_exporter(:xcsv, ActiveList::ExcelCsvExporter)

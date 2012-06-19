@@ -1,7 +1,7 @@
 require 'action_controller'
 require 'action_view'
 
-module List
+module ActiveList
 
   module ActionController
 
@@ -11,7 +11,7 @@ module List
 
     module ClassMethods
       # Permits to define and generate methods to manage dynamic 
-      # table List
+      # table ActiveList
       def list(*args, &block)
         name, options = nil, {}
         name = args[0] if args[0].is_a? Symbol
@@ -21,7 +21,7 @@ module List
         options[:controller_method_name] = "list#{'_'+name.to_s if name != self.controller_name.to_sym}"
         options[:view_method_name]       = "_#{self.controller_name}_list_#{name}_tag"
         options[:records_variable_name]  = "@#{name}"
-        table = List::Table.new(name, model, options)
+        table = ActiveList::Table.new(name, model, options)
         if block_given?
           yield table
         else
@@ -46,7 +46,3 @@ module List
   end
 
 end
-
-# # ActionController::Base.send(:include, ActionView::Helpers::NumberHelper)
-# ActionController::Base.send(:include, List::ActionController)
-# ActionView::Base.send(:include, List::ViewsHelper)

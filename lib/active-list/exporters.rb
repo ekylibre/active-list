@@ -1,12 +1,12 @@
 require 'active_support/core_ext/module/attribute_accessors'
 
-module List
+module ActiveList
 
   mattr_reader :exporters
   @@exporters = {}
 
   def self.register_exporter(name, exporter)
-    raise ArgumentError.new("List::Exporter expected (got #{exporter.name}/#{exporter.ancestors.inspect})") unless exporter.ancestors.include? List::Exporter
+    raise ArgumentError.new("ActiveList::Exporter expected (got #{exporter.name}/#{exporter.ancestors.inspect})") unless exporter.ancestors.include? ActiveList::Exporter
     @@exporters[name] = exporter.new(name)
   end
   
@@ -49,7 +49,7 @@ module List
       array = []
       record = options[:record]||'rekord'
       for column in columns
-        if column.is_a? List::Column
+        if column.is_a? ActiveList::Column
           if nature==:header
             datum = column.header_code
           else

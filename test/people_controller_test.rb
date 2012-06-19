@@ -25,7 +25,7 @@ end
 #   class PeopleController < ActionController::Base
 #     layout nil
     
-#     include List::ActionController
+#     include ActiveList::ActionController
 #     list
     
 #     def index

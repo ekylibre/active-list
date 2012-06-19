@@ -3,7 +3,7 @@ require "active-list/finder"
 require "active-list/exporters"
 require "active-list/renderers"
 
-module List
+module ActiveList
 
   class Table
 
@@ -20,7 +20,7 @@ module List
     end
 
     def renderer
-      List.renderers[@options[:renderer]]
+      ActiveList.renderers[@options[:renderer]]
     end
     
 
@@ -36,7 +36,7 @@ module List
       code << "        render(:inline=>'<%=#{self.view_method_name}-%>', :layout=>true)\n"
       code << "      end\n"
       code << "    end\n"
-      for format, exporter in List.exporters
+      for format, exporter in ActiveList.exporters
         code << "    format.#{format} do\n"
         code << exporter.send_data_code(self).gsub(/^/, '      ')
         code << "    end\n"

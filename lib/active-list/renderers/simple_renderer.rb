@@ -1,6 +1,6 @@
-module List
+module ActiveList
 
-  class SimpleRenderer < List::Renderer
+  class SimpleRenderer < ActiveList::Renderer
 
     DATATYPE_ABBREVIATION = {
       :binary => :bin,
@@ -210,7 +210,7 @@ module List
       # Separator
       menu << "<li class=\"separator\"></li>"      
       # Exports
-      for format, exporter in List.exporters
+      for format, exporter in ActiveList.exporters
         menu << "<li class=\"export #{exporter.name}\">' + link_to(params.merge(:action=>:#{table.controller_method_name}, :sort=>list_params[:sort], :dir=>list_params[:dir], :format=>'#{format}'), :class=>\"export\") { '<span class=\"icon\"></span>'.html_safe + content_tag('span', ::I18n.translate('list.export_as', :exported=>::I18n.translate('list.export.formats.#{format}')).gsub(/\'/,'&#39;'), :class=>'text')} + '</li>"
       end
       menu << "</ul></div>"
@@ -299,4 +299,4 @@ module List
 end
 
 
-List.register_renderer(:simple_renderer, List::SimpleRenderer)
+ActiveList.register_renderer(:simple_renderer, ActiveList::SimpleRenderer)

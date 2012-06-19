@@ -8,7 +8,7 @@ class CodeGenerationTest < ActiveSupport::TestCase
   end
 
   def test_generate_simple_table
-    table = List::Table.new(:people)
+    table = ActiveList::Table.new(:people)
     assert_nothing_raised do
       table.load_default_columns
     end
@@ -21,7 +21,7 @@ class CodeGenerationTest < ActiveSupport::TestCase
   end
 
   def test_generate_table_with_reflection
-    table = List::Table.new(:contact)
+    table = ActiveList::Table.new(:contact)
     assert_nothing_raised do
       table.load_default_columns
     end

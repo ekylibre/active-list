@@ -3,8 +3,8 @@ module ActiveList
     class Engine < ::Rails::Engine
       engine_name "active_list"
       initializer "active_list.integrate_methods" do |app|
-        ActionController::Base.send(:include, List::ActionController)
-        ActionView::Base.send(:include, List::ViewsHelper)
+        ::ActionController::Base.send(:include, ActiveList::ActionController)
+        ::ActionView::Base.send(:include, ActiveList::ViewsHelper)
       end
       # initializer "active_list.add_images_to_asset_paths" do |app|
       #   app.assets.paths << ActiveList.assets_path

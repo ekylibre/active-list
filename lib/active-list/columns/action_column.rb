@@ -1,5 +1,5 @@
 # coding: utf-8
-module List
+module ActiveList
 
   class Table
 

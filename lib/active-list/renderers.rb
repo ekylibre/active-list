@@ -1,12 +1,12 @@
 require 'active_support/core_ext/module/attribute_accessors'
 
-module List
+module ActiveList
 
   mattr_reader :renderers
   @@renderers = {}
 
   def self.register_renderer(name, renderer)
-    raise ArgumentError.new("A renderer must be List::Renderer") unless renderer.ancestors.include? List::Renderer
+    raise ArgumentError.new("A renderer must be ActiveList::Renderer") unless renderer.ancestors.include? ActiveList::Renderer
     @@renderers[name] = renderer.new
   end
 

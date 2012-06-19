@@ -1,4 +1,4 @@
-module List
+module ActiveList
 
   class Table
 
