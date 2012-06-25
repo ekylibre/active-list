@@ -28,7 +28,7 @@ module ActiveList
       record = "r"
       code  = table.select_data_code(:paginate => false)
       code << "name = #{table.model.name}.model_name.human.gsub(/[^a-z0-9]/i,'_')\n"
-      code << "temporary_dir = Rails.root.join('tmp', 'active-list')\n"
+      code << "temporary_dir = ::Rails.root.join('tmp', 'active-list')\n"
       code << "FileUtils.mkdir_p(temporary_dir)\n"
       code << "file = temporary_dir.join(name+rand.to_s+'.#{self.file_extension}')\n"
       code << "Zip::ZipOutputStream.open(file) do |zile|\n"

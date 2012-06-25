@@ -11,7 +11,7 @@ module ActiveList
       @options = options
       @paginate = !(@options[:pagination]==:none || @options[:paginate].is_a?(FalseClass))
       @options[:renderer] ||= :simple_renderer
-      @options[:per_page] = 25 if @options[:per_page].to_i <= 0
+      @options[:per_page] = 20 if @options[:per_page].to_i <= 0
       @options[:page] = 1 if @options[:page].to_i <= 0
       @columns = []
       @current_id = 0

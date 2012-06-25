@@ -32,7 +32,8 @@ module ActiveList
         code << "#{self.records_variable_name}_offset = (#{self.records_variable_name}_page-1)*#{self.records_variable_name}_limit\n"
         code << "#{self.records_variable_name}_last = (#{self.records_variable_name}_count.to_f/#{self.records_variable_name}_limit).ceil.to_i\n"
         code << "#{self.records_variable_name}_last = 1 if #{self.records_variable_name}_last < 1\n"
-        code << "return #{self.view_method_name}(options.merge(:page=>1)) if 1 > #{self.records_variable_name}_page or #{self.records_variable_name}_page > #{self.records_variable_name}_last\n"
+        code << "return #{self.view_method_name}(options.merge(:page=>1)) if 1 > #{self.records_variable_name}_page\n"
+        code << "return #{self.view_method_name}(options.merge(:page=>#{self.records_variable_name}_last)) if #{self.records_variable_name}_page > #{self.records_variable_name}_last\n"
       end
       code << "#{self.records_variable_name} = #{query_code}"
       if paginate
