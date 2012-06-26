@@ -1,0 +1,161 @@
+// Default style for ActiveList
+@import "compass/css3";
+@import "compass/typography/text/replacement";
+
+// Because Compass sprites do not seems to work well in gems
+@mixin active-list-sprite($name, $size: 16px) {
+  background-image: image-url("active-list.png");
+  background-repeat: no-repeat;
+  height: $size;
+  width: $size;
+  $i: 0;
+  @each $icon in menu check columns export pages first-page previous-page previous-line next-line next-page last-page sort sort-down sort-up true false { 
+    @if $icon == $name { 
+      background-position: (-$i * $size) 0;
+    }
+    $i: $i + 1;
+  }
+}
+
+
+@mixin active-list-theme($theme-color: #777777) { 
+  $default-border-color: mix($theme-color, #FFF, 30%);
+  table.list { 
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid $default-border-color;
+    z-index: 2;
+    @include box-shadow(0 0 7px rgba(0, 0, 0, 0.15));
+    thead { 
+      th { 
+        border: 1px solid $default-border-color;
+        padding: 2px 3px;
+        @include background($theme-color linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)));
+        &[data-list-column-sort] { 
+          .icon { 
+            @include active-list-sprite(sort); 
+            @include inline-block;
+            margin: 0 2px;
+          }
+          &.sor[data-list-column-sort="desc"] .icon { 
+            @include active-list-sprite(sort-down); }
+          &.sor[data-list-column-sort="asc"] .icon { 
+            @include active-list-sprite(sort-up); }
+        }
+        html[dir="ltr"] & { text-align: left; }
+        html[dir="rtl"] & { text-align: right; }
+        &.spe { 
+          width: 16px;
+          height: 16px;
+          .list-menu { 
+            position: relative;
+            background: none;
+            .list-menu-start { 
+              padding: 2px;
+              width: 16px;
+              height: 16px;
+              .icon { @include active-list-sprite(menu); }
+              .text { display: none; }
+            }
+            &:hover {
+              .list-menu-start { 
+                background-color: white; 
+                z-index:5000; 
+              }
+            }
+            ul { 
+              border: 1px solid $default-border-color;
+              background: #FFF;
+              @include box-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+              li { 
+                $menu-width: 290px;
+                width: $menu-width; 
+                ul { 
+                  html[dir="ltr"] & { right: $menu-width; }
+                  html[dir="rtl"] & { left: $menu-width; }
+                }
+              }
+            }
+            a, li { 
+              display: block;
+              padding: 2px;
+              .icon {
+                @include inline-block;
+                height:16px;
+                width: 16px;
+                html[dir="ltr"] & { margin-right:  4px; }
+                html[dir="rtl"] & { margin-left: 4px; }
+              }
+              &.pages     .icon { @include active-list-sprite(pages); }
+              &.export    .icon { @include active-list-sprite(export); }
+              &.check     .icon { @include active-list-sprite(check); }
+              &.columns   .icon { @include active-list-sprite(columns); }
+              &.checked   .icon { @include active-list-sprite(true); }
+              &.unchecked .icon { @include active-list-sprite(false); }
+            }
+            a:hover, li:hover { 
+              text-decoration: none;
+              background: mix($theme-color, #FFF, 10%);
+            }
+          }
+        }
+      }
+    }
+    tbody { 
+      tr {
+        td { 
+          padding: 2px 3px;
+          border-top: 1px solid mix($theme-color, #FFF, 10%);
+          border-bottom: none;
+          border-left: none;
+          border-right: none;
+          &.chk,&.act, &.dld, &.bln, &.dat, &.web  { text-align:center }
+          &.dec, &.flt, &.int { 
+            html[dir="ltr"] & { text-align: right; }
+            html[dir="rtl"] & { text-align: left; }
+          }
+          &.country { white-space: nowrap; }
+          &.color { color: white; text-shadow: 0 0 2px #000; width: 6ex; text-align: center; }
+        }
+        &:first-child td { 
+          border-top: none;
+        }
+      }
+    }
+
+    @include list-colors(#FFFFFF);
+  }
+  .extras { 
+    z-index: 0;
+    @include background(transparentize(mix($theme-color, #FFF, 40%), 0.7));
+    .pagination { 
+       html[dir="ltr"] & { text-align: left; }
+       html[dir="rtl"] & { text-align: right; }
+       & > * { 
+         margin: 0 2px;
+       }
+       .first-page, .previous-page, .next-page, .last-page {
+         @include inline-block;
+         @include squish-text;
+       }
+        html[dir="rtl"] & .last-page, html[dir="ltr"] & .first-page {
+          @include active-list-sprite(first-page);
+        }
+        html[dir="rtl"] & .first-page, html[dir="ltr"] & .last-page {
+          @include active-list-sprite(last-page);
+        }
+        html[dir="rtl"] & .next-page, html[dir="ltr"] & .previous-page {
+          @include active-list-sprite(previous-page);
+        }
+        html[dir="rtl"] & .previous-page, html[dir="ltr"] & .next-page {
+          @include active-list-sprite(next-page);
+        }
+       .separator { 
+         @include inline-block;
+         width: 2px;
+         height: 1.2em;
+         background: transparentize($theme-color, 0.7);
+       }
+    }
+  }
+}
