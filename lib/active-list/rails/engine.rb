@@ -6,10 +6,6 @@ module ActiveList
         ::ActionController::Base.send(:include, ActiveList::ActionController)
         ::ActionView::Base.send(:include, ActiveList::ViewsHelper)
       end
-      # initializer "active_list.add_images_to_asset_paths" do |app|
-      #   app.assets.paths << ActiveList.assets_path
-      #   app.sass.load_paths << ActiveList.assets_path
-      # end
     end
   end
 end
