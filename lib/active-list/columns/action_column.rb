@@ -18,15 +18,21 @@ module ActiveList
 
 
     def operation(record='record')
+      @options[:method] = :delete if @name.to_s == "destroy"
+      @options[:confirm] = "list.do_you_really_want_to_delete_this_record".t if @name.to_s == "destroy"
       link_options = ""
-      link_options += ", :confirm=>::I18n.translate('labels.#{@options[:confirm]}')" unless @options[:confirm].nil?
-      link_options += ", :method=>#{@options[:method].inspect}" if @options[:method].is_a? Symbol
+      if @options['data-confirm'] or @options[:confirm]
+        link_options << ", 'data-confirm' => ::I18n.translate('labels.#{@options['data-confirm']||@options[:confirm]}')"
+      end
+      if @options['data-method'] or @options[:method]
+        link_options << ", :method => h('#{(@options['data-method']||@options[:method])}')"
+      end
       action = @name
       format = @options[:format] ? ", :format=>'#{@options[:format]}'" : ""
       if @options[:remote]
         raise Exception.new("Sure to use :remote ?")
         remote_options = @options.dup
-        remote_options[:confirm] = ::I18n.translate('labels.'+@options[:confirm].to_s) unless @options[:confirm].nil?
+        remote_options['data-confirm'] = ::I18n.translate('labels.'+@options[:confirm].to_s) unless @options[:confirm].nil?
         remote_options.delete :remote
         remote_options.delete :image
         remote_options = remote_options.inspect.to_s
