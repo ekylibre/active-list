@@ -18,8 +18,8 @@ module ActiveList
 
 
     def operation(record='record')
-      @options[:method] = :delete if @name.to_s == "destroy"
-      @options[:confirm] = "list.do_you_really_want_to_delete_this_record".t if @name.to_s == "destroy"
+      @options[:method] = :delete if @name.to_s == "destroy" and !@options.has_key?(:method)
+      @options[:confirm] = :are_you_sure_you_want_to_delete if @name.to_s == "destroy" and !@options.has_key?(:confirm)
       link_options = ""
       if @options['data-confirm'] or @options[:confirm]
         link_options << ", 'data-confirm' => ::I18n.translate('labels.#{@options['data-confirm']||@options[:confirm]}')"
