@@ -50,7 +50,7 @@ module ActiveList
       code << "if #{table.records_variable_name}_count > 0\n"
       code << "  reset_cycle('list')\n"
       code << "  for #{record} in #{table.records_variable_name}\n"
-      line_class = "cycle('odd', 'even', :name=>'list')"
+      line_class = "cycle('odd', 'even', :name=>'list')+' r'+#{record}.id.to_s"
       line_class << "+' '+("+table.options[:line_class].to_s.gsub(/RECORD/, record)+').to_s' unless table.options[:line_class].nil?
       code << "    tbody << content_tag(:tr, (#{tbody}).html_safe, :class=>#{line_class})\n"
       if table.options[:children].is_a? Symbol
@@ -261,7 +261,7 @@ module ActiveList
 
         pagination << "<span class=\"separator\"></span>"
 
-        pagination << "<span class=\"status\">'+::I18n.translate('list.pagination.showing_x_to_y_of_total', :x => (#{table.records_variable_name}_offset + 1), :y => (#{table.records_variable_name}_offset+#{table.records_variable_name}_limit), :total => #{table.records_variable_name}_count)+'</span>"
+        pagination << "<span class=\"status\">'+::I18n.translate('list.pagination.showing_x_to_y_of_total', :x => (#{table.records_variable_name}_offset + 1), :y => ((#{table.records_variable_name}_last==#{table.records_variable_name}_page) ? #{table.records_variable_name}_count : #{table.records_variable_name}_offset+#{table.records_variable_name}_limit), :total => #{table.records_variable_name}_count)+'</span>"
         pagination << "</div>"
 
         code = "(#{table.records_variable_name}_last > 1 ? '<div class=\"extras\">#{pagination}</div>' : '').html_safe"

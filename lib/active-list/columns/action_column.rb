@@ -49,7 +49,8 @@ module ActiveList
           v = a[1][:action].to_s.split('_')[-1]
           cases << record+"."+@name.to_s+".to_s=="+a[0].inspect+"\nlink_to(::I18n.translate('labels.#{v}')"+
             ", {"+(a[1][:controller] ? ':controller=>:'+a[1][:controller].to_s+', ' : '')+":action=>'"+a[1][:action].to_s+"', :id=>"+record+".id"+format+"}"+
-            ", {:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+", :title=>::I18n.translate('labels.#{v}')}"+
+            # ", {:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+"}"+
+            ", {:class=>'#{@name}'"+link_options+"}"+
             ")\n"
         end
 
@@ -61,7 +62,8 @@ module ActiveList
         url[:id] ||= "RECORD.id"
         url.delete_if{|k, v| v.nil?}
         url = "{"+url.collect{|k, v| ":#{k}=>"+(v.is_a?(String) ? v.gsub(/RECORD/, record) : v.inspect)}.join(", ")+format+"}"
-        code = "{:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+", :title=>::I18n.translate('labels.#{action}')}"
+        # code = "{:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+"}"
+        code = "{:class=>'#{@name}'"+link_options+"}"
         code = "link_to(::I18n.translate('labels.#{action}'), "+url+", "+code+")"
       end
       code = "if ("+@options[:if].gsub('RECORD', record)+")\n"+code+"\n end" if @options[:if]
