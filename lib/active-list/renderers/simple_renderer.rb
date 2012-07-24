@@ -69,8 +69,8 @@ module ActiveList
 
       code << "html = ''\n"
       code << "html << '<div id=\"#{table.name}\" data-list-source=\"'+h(url_for({:action => '#{table.controller_method_name}'}))+'\" class=\"active-list\""
-      code << "data-list-current-page=\"' + #{table.records_variable_name}_page.to_s + '\" data-list-page-size=\"' + #{table.records_variable_name}_limit.to_s + '\""
-      code << "data-list-sort-by=\"' + list_params[:sort].to_s + '\" data-list-sort-dir=\"' + list_params[:dir].to_s + '\""
+      code << " data-list-current-page=\"' + #{table.records_variable_name}_page.to_s + '\" data-list-page-size=\"' + #{table.records_variable_name}_limit.to_s + '\""
+      code << " data-list-sort-by=\"' + list_params[:sort].to_s + '\" data-list-sort-dir=\"' + list_params[:dir].to_s + '\""
       code << ">'\n"
       code << "html << '<table class=\"list\">'\n"
       code << "html << (#{header})\n"
@@ -198,7 +198,7 @@ module ActiveList
         menu << "<li class=\"parent\">"
         menu << "<a class=\"pages\"><span class=\"icon\"></span><span class=\"text\">' + ::I18n.translate('list.items_per_page').gsub(/\'/,'&#39;') + '</span></a><ul>"
         for n in list
-          menu << "<li data-list-change-page-size=\"#{n}\" '+(list_params[:per_page] == #{n} ? ' class=\"check\"' : '')+'><span class=\"icon\"></span><span class=\"text\">'+h(::I18n.translate('list.x_per_page', :count=>#{n}))+'</span></li>"
+          menu << "<li data-list-change-page-size=\"#{n}\" '+(list_params[:per_page] == #{n} ? ' class=\"check\"' : '')+'><a><span class=\"icon\"></span><span class=\"text\">'+h(::I18n.translate('list.x_per_page', :count=>#{n}))+'</span></a></li>"
         end
         menu << "</ul></li>"
       end
@@ -207,7 +207,7 @@ module ActiveList
       menu << "<li class=\"parent\">"
       menu << "<a class=\"columns\"><span class=\"icon\"></span><span class=\"text\">' + ::I18n.translate('list.columns').gsub(/\'/,'&#39;') + '</span></a><ul>"
       for column in table.data_columns
-        menu << "<li data-list-toggle-column=\"#{column.id}\" class=\"'+(list_params[:hidden_columns].include?('#{column.id}') ? 'unchecked' : 'checked')+'\"><span class=\"icon\"></span><span class=\"text\">'+h(#{column.header_code})+'</span></li>"
+        menu << "<li data-list-toggle-column=\"#{column.id}\" class=\"'+(list_params[:hidden_columns].include?('#{column.id}') ? 'unchecked' : 'checked')+'\"><a><span class=\"icon\"></span><span class=\"text\">'+h(#{column.header_code})+'</span></a></li>"
       end
       menu << "</ul></li>"
 
@@ -215,7 +215,7 @@ module ActiveList
       menu << "<li class=\"separator\"></li>"      
       # Exports
       for format, exporter in ActiveList.exporters
-        menu << "<li class=\"export #{exporter.name}\">' + link_to(params.merge(:action=>:#{table.controller_method_name}, :sort=>list_params[:sort], :dir=>list_params[:dir], :format=>'#{format}'), :class=>\"export\") { '<span class=\"icon\"></span>'.html_safe + content_tag('span', ::I18n.translate('list.export_as', :exported=>::I18n.translate('list.export.formats.#{format}')).gsub(/\'/,'&#39;'), :class=>'text')} + '</li>"
+        menu << "<li class=\"export #{exporter.name}\">' + link_to(params.merge(:action=>:#{table.controller_method_name}, :sort=>list_params[:sort], :dir=>list_params[:dir], :format=>'#{format}')) { '<span class=\"icon\"></span>'.html_safe + content_tag('span', ::I18n.translate('list.export_as', :exported=>::I18n.translate('list.export.formats.#{format}')).gsub(/\'/,'&#39;'), :class=>'text')} + '</li>"
       end
       menu << "</ul></div>"
       return menu

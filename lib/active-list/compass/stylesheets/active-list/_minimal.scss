@@ -29,26 +29,24 @@ div[data-list-source] {
                 top: 20px;
                 padding: 1px;
                 margin:0;
-                html[dir="ltr"] & { right: -1px;}
+                 & { right: -1px;}
                 html[dir="rtl"] & { left: -1px;}
                 li {
                   &[data-list-change-page-size], &[data-list-toggle-column] { 
                     cursor: pointer;
                     display: block;
-                    padding: 0.3ex;
                   }
                   list-style-type: none;
                   width: 25ex;
                   position: relative;
                   a {
                     display: block;
-                    padding: 0.3ex;
                   }
                   ul {
                     display: none;
                     position: absolute;
                     top: -2px; 
-                    html[dir="ltr"] & { right: 25ex; }
+                     & { right: 25ex; }
                     html[dir="rtl"] & { left: 25ex; }
                     &:hover { display:block; }
                   }
