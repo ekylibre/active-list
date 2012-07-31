@@ -33,12 +33,6 @@ And in the view app/views/people/index.html.erb:
 
 == Build Status {<img src="https://secure.travis-ci.org/burisu/active-list.png"/>}[http://travis-ci.org/burisu/active-list]
 
-== To do
-
-* Provides styles as @mixins for a better customization
-* Adds support for Prototype JS
-* Adds implicit exporters JSON, XML,
-
 == License
 
 ActiveList is released under the MIT license:
