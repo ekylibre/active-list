@@ -68,7 +68,7 @@ module ActiveList
       code << "return tbody.html_safe if options[:only] == 'body' or options[:only] == 'tbody'\n"
 
       code << "html = ''\n"
-      code << "html << '<div id=\"#{table.name}\" data-list-source=\"'+h(url_for({:action => '#{table.controller_method_name}'}))+'\" class=\"active-list\""
+      code << "html << '<div id=\"#{table.name}\" data-list-source=\"'+h(url_for(options.merge(:action => '#{table.controller_method_name}')))+'\" class=\"active-list\""
       code << " data-list-current-page=\"' + #{table.records_variable_name}_page.to_s + '\" data-list-page-size=\"' + #{table.records_variable_name}_limit.to_s + '\""
       code << " data-list-sort-by=\"' + list_params[:sort].to_s + '\" data-list-sort-dir=\"' + list_params[:dir].to_s + '\""
       code << ">'\n"
