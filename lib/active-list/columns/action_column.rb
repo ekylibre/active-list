@@ -66,7 +66,9 @@ module ActiveList
         code = "{:class=>'#{@name}'"+link_options+"}"
         code = "link_to(::I18n.translate('labels.#{action}'), "+url+", "+code+")"
       end
-      code = "if ("+@options[:if].gsub('RECORD', record)+")\n"+code+"\n end" if @options[:if]
+      if @options[:if]
+        code = "if (" + (@options[:if].is_a?(Symbol) ? "#{record}.#{@options[:if]}" : @options[:if].to_s.gsub('RECORD', record)) + ")\n" + code + "\n end" 
+      end
       code
     end
 
