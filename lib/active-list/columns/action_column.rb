@@ -4,7 +4,7 @@ module ActiveList
   class Table
 
     # Add a new method in Table which permit to define data columns
-    def action(name, options={})
+    def action(name, options = {})
       @columns << ActionColumn.new(self, name, options)
     end
 
@@ -17,7 +17,7 @@ module ActiveList
     end
 
 
-    def operation(record='record')
+    def operation(record = 'record')
       @options[:method] = :delete if @name.to_s == "destroy" and !@options.has_key?(:method)
       @options[:confirm] = :are_you_sure_you_want_to_delete if @name.to_s == "destroy" and !@options.has_key?(:confirm)
       link_options = ""
@@ -68,6 +68,9 @@ module ActiveList
       end
       if @options[:if]
         code = "if (" + (@options[:if].is_a?(Symbol) ? "#{record}.#{@options[:if]}" : @options[:if].to_s.gsub('RECORD', record)) + ")\n" + code + "\n end" 
+      end
+      if @options[:unless]
+        code = "unless (" + (@options[:unless].is_a?(Symbol) ? "#{record}.#{@options[:unless]}" : @options[:unless].to_s.gsub('RECORD', record)) + ")\n" + code + "\n end" 
       end
       code
     end
