@@ -117,6 +117,8 @@ module ActiveList
                 datum = "(#{datum}.nil? ? '' : ::I18n.localize(#{datum}, :currency => #{currency}))"
               elsif column.datatype == :decimal
                 datum = "(#{datum}.nil? ? '' : ::I18n.localize(#{datum}))"
+              elsif column.enumerize?
+                datum = "(#{datum}.nil? ? '' : #{datum}.text)"                
               end
               if column.options[:url].is_a?(TrueClass) and nature==:body
                 datum = "(#{datum}.blank? ? '' : link_to(#{datum}, {:controller=>:#{column.class_name.underscore.pluralize}, :action=>:show, :id=>#{column.record_expr(record)+'.id'}}))"
