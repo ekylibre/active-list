@@ -81,10 +81,8 @@ module ActiveList
         datum = "(#{datum}.nil? ? '' : ::I18n.translate('countries.'+#{datum}))"
       elsif @name==:language and self.datatype == :string and self.limit <= 8
         datum = "(#{datum}.nil? ? '' : ::I18n.translate('languages.'+#{datum}))"
-      elsif self.table.model.respond_to?(@name) and !@options[:through]
-        if self.table.model.send(@name).respond_to?(:values)
-          datum = "(#{datum}.nil? ? '' : #{datum}.text)"
-        end
+      elsif self.enumerize?
+        datum = "(#{datum}.nil? ? '' : #{datum}.text)"
       end
       return datum
     end
@@ -97,8 +95,10 @@ module ActiveList
     
     def enumerize?
       if self.table.model.respond_to?(@name) and !@options[:through]
-        if self.table.model.send(@name).respond_to?(:values)
-          return true
+        if self.table.model.method(@name).arity.zero?
+          if self.table.model.send(@name).respond_to?(:values)
+            return true
+          end
         end
       end
       return false
