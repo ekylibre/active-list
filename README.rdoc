@@ -8,6 +8,9 @@ tables. No scaffolds, only listings.
 
 ActiveList works only with Rails ≥ 3.1.
 
+ActiveList works only with Ruby ≥ 1.9 since v4.2.0.
+
+
 == Quick start
 
 First, the JS code must be added to the pipeline in app/assets/javascripts/application.js:
