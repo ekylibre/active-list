@@ -40,7 +40,7 @@ module ActiveList
         code << ".offset(#{self.records_variable_name}_offset)"
         code << ".limit(#{self.records_variable_name}_limit)"
       end
-      code << ".order(order)||{}\n"
+      code << ".reorder(order)||{}\n"
       return code
     end
    

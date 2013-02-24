@@ -49,10 +49,10 @@ module ActiveList
 
     def generate_view_method_code
       code  = "# encoding: utf-8\n"
-      code += "def #{self.view_method_name}(options={}, &block)\n"
-      code += self.session_initialization_code.gsub(/^/, '  ')
-      code += self.renderer.build_table_code(self).gsub(/^/, '  ')
-      code += "end\n"
+      code << "def #{self.view_method_name}(options={}, &block)\n"
+      code << self.session_initialization_code.gsub(/^/, '  ')
+      code << self.renderer.build_table_code(self).gsub(/^/, '  ')
+      code << "end\n"
       # code.split("\n").each_with_index{|l, x| puts((x+1).to_s.rjust(4)+": "+l)}
       return code      
     end
@@ -60,25 +60,25 @@ module ActiveList
 
     def session_initialization_code
       code  = "options = {} unless options.is_a? Hash\n"
-      code += "options = (params||{}).merge(options)\n"
+      code << "options = (params||{}).merge(options)\n"
       # Session values
-      code += "session[:list] = {} unless session[:list].is_a? Hash\n"
-      code += "session[:list][:#{self.view_method_name}] = {} unless session[:list][:#{self.view_method_name}].is_a? Hash\n"      
-      code += "list_params = session[:list][:#{self.view_method_name}]\n"
-      code += "list_params[:hidden_columns] = [] unless list_params[:hidden_columns].is_a? Array\n"
+      code << "session[:list] = {} unless session[:list].is_a? Hash\n"
+      code << "session[:list][:#{self.view_method_name}] = {} unless session[:list][:#{self.view_method_name}].is_a? Hash\n"      
+      code << "list_params = session[:list][:#{self.view_method_name}]\n"
+      code << "list_params[:hidden_columns] = [] unless list_params[:hidden_columns].is_a? Array\n"
       for parameter, convertor in @parameters.sort{|a,b| a[0].to_s <=> b[0].to_s}
         expr = "options.delete('#{self.name}_#{parameter}') || options.delete('#{parameter}') || list_params[:#{parameter}]"
         expr += " || #{@options[parameter]}" unless @options[parameter].blank?
-        code += "list_params[:#{parameter}] = (#{expr}).#{convertor}\n"
+        code << "list_params[:#{parameter}] = (#{expr}).#{convertor}\n"
       end
       # Order
-      code += "order = #{self.options[:order] ? self.options[:order].inspect : 'nil'}\n"
-      code += "if (col = {"+self.sortable_columns.collect{|c| "'#{c.id}'=>'#{c.name}'"}.join(', ')+"}[list_params[:sort]])\n"
-      code += "  list_params[:dir] ||= 'asc'\n"
-      code += "  if list_params[:dir] == 'asc' or list_params[:dir] == 'desc'\n"
-      code += "    order = #{@model.name}.connection.quote_column_name(col)+' '+list_params[:dir]\n"
-      code += "  end\n"
-      code += "end\n"
+      code << "order = #{self.options[:order] ? self.options[:order].inspect : 'nil'}\n"
+      code << "if (col = {"+self.sortable_columns.collect{|c| "'#{c.id}'=>'#{c.name}'"}.join(', ')+"}[list_params[:sort]])\n"
+      code << "  list_params[:dir] ||= 'asc'\n"
+      code << "  if list_params[:dir] == 'asc' or list_params[:dir] == 'desc'\n"
+      code << "    order = #{@model.name}.connection.quote_column_name(col)+' '+list_params[:dir]\n"
+      code << "  end\n"
+      code << "end\n"
 
       return code
     end
