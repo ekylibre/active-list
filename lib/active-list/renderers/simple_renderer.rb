@@ -251,15 +251,15 @@ module ActiveList
         last_page = "#{table.records_variable_name}_last"
 
         pagination << "<div class=\"pagination\">"
-        pagination << "<a href=\"#\" data-list-move-to-page=\"1\" class=\"first-page\"' + (#{current_page} != 1 ? '' : ' disabled=\"true\"') + '>' + ::I18n.translate('list.pagination.first') + '</a>"
-        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{current_page} - 1).to_s + '\" class=\"previous-page\"' + (#{current_page} != 1 ? '' : ' disabled=\"true\"') + '>' + ::I18n.translate('list.pagination.previous') + '</a>"
+        pagination << "<a href=\"#\" data-list-move-to-page=\"1\" class=\"first-page\"' + (#{current_page} != 1 ? '' : ' disabled=\"true\"') + '><i></i>' + ::I18n.translate('list.pagination.first') + '</a>"
+        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{current_page} - 1).to_s + '\" class=\"previous-page\"' + (#{current_page} != 1 ? '' : ' disabled=\"true\"') + '><i></i>' + ::I18n.translate('list.pagination.previous') + '</a>"
 
         x = '@@PAGE-NUMBER@@'
         y = '@@PAGE-COUNT@@'
         pagination << "<span class=\"paginator\">'+::I18n.translate('list.page_x_on_y', :default=>'%{x} / %{y}', :x => '#{x}', :y =>'#{y}').html_safe.gsub('#{x}', ('<input type=\"number\" size=\"4\" data-list-move-to-page=\"value\" value=\"'+#{table.records_variable_name}_page.to_s+'\">').html_safe).gsub('#{y}', #{table.records_variable_name}_last.to_s) + '</span>"
 
-        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{current_page} + 1).to_s + '\" class=\"next-page\"' + (#{current_page} != #{last_page} ? '' : ' disabled=\"true\"') + '>' + ::I18n.translate('list.pagination.next')+'</a>"
-        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{last_page}).to_s + '\" class=\"last-page\"' + (#{current_page} != #{last_page} ? '' : ' disabled=\"true\"') + '>' + ::I18n.translate('list.pagination.last')+'</a>"
+        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{current_page} + 1).to_s + '\" class=\"next-page\"' + (#{current_page} != #{last_page} ? '' : ' disabled=\"true\"') + '><i></i>' + ::I18n.translate('list.pagination.next')+'</a>"
+        pagination << "<a href=\"#\" data-list-move-to-page=\"' + (#{last_page}).to_s + '\" class=\"last-page\"' + (#{current_page} != #{last_page} ? '' : ' disabled=\"true\"') + '><i></i>' + ::I18n.translate('list.pagination.last')+'</a>"
 
         pagination << "<span class=\"separator\"></span>"
 

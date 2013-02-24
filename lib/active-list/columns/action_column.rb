@@ -13,7 +13,7 @@ module ActiveList
   class ActionColumn < Column
 
     def header_code
-      "'ƒ'"
+      "''"
     end
 
 
@@ -47,7 +47,7 @@ module ActiveList
         cases = []
         for a in @options[:actions]
           v = a[1][:action].to_s.split('_')[-1]
-          cases << record+"."+@name.to_s+".to_s=="+a[0].inspect+"\nlink_to(::I18n.translate('labels.#{v}')"+
+          cases << record+"."+@name.to_s+".to_s=="+a[0].inspect+"\nlink_to(content_tag(:i) + h(::I18n.translate('labels.#{v}'))"+
             ", {"+(a[1][:controller] ? ':controller=>:'+a[1][:controller].to_s+', ' : '')+":action=>'"+a[1][:action].to_s+"', :id=>"+record+".id"+format+"}"+
             # ", {:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+"}"+
             ", {:class=>'#{@name}'"+link_options+"}"+
@@ -64,7 +64,7 @@ module ActiveList
         url = "{"+url.collect{|k, v| ":#{k}=>"+(v.is_a?(String) ? v.gsub(/RECORD/, record) : v.inspect)}.join(", ")+format+"}"
         # code = "{:id=>'"+@name.to_s+"_'+"+record+".id.to_s"+link_options+"}"
         code = "{:class=>'#{@name}'"+link_options+"}"
-        code = "link_to(::I18n.translate('labels.#{action}'), "+url+", "+code+")"
+        code = "link_to(content_tag(:i) + h(::I18n.translate('labels.#{action}')), "+url+", "+code+")"
       end
       if @options[:if]
         code = "if (" + (@options[:if].is_a?(Symbol) ? "#{record}.#{@options[:if]}" : @options[:if].to_s.gsub('RECORD', record)) + ")\n" + code + "\n end" 
