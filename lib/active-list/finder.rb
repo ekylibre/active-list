@@ -12,7 +12,8 @@ module ActiveList
         if columns.size > 0
           self.options[:order] = columns[0].name.to_s # self.model.connection.quote_column_name(columns[0].name.to_s)
         else
-          raise ArgumentError.new("Option :order is needed for the list :#{self.name}")
+          # raise ArgumentError.new("Option :order is needed for the list :#{self.name}")
+          self.options[:order] = "id DESC"
         end
       end
 
