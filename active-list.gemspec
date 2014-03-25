@@ -11,18 +11,18 @@ Gem::Specification.new do |s|
   s.description = "Generates action methods to"+
     " provide clean tables."
   s.extra_rdoc_files = [ "LICENSE", "README.rdoc" ]
-  all_test_files = `git ls-files test`.split("\n") 
-  # s.test_files = all_test_files
-  exclusions = all_test_files + [ "#{s.name}.gemspec", ".travis.yml", ".gitignore", "Gemfile", "Gemfile.lock", "Rakefile", "lib/assets/images/active-list.svg"]
-  s.files = `git ls-files`.split("\n").delete_if{|f| exclusions.include?(f) }
+
+  s.files = `git ls-files app lib VERSION LICENSE README.rdoc`.split("\n")
   s.homepage = "http://github.com/burisu/active-list"
   s.license = "MIT"
   s.require_path = "lib"
-  add_runtime_dependency = (s.respond_to?(:add_runtime_dependency) ? :add_runtime_dependency : :add_dependency)
-  s.send(add_runtime_dependency, "rails", [">= 3.1"])
-  s.send(add_runtime_dependency, "compass-rails", [">= 1"])
-  s.send(add_runtime_dependency, "fastercsv", [">= 1.5"])
-  s.send(add_runtime_dependency, "i18n-complements", [">= 0"])
+
+  s.add_dependency "rails", [">= 3.2", "< 4.1"]
+  s.add_dependency "sass-rails"
+  s.add_dependency "compass-rails", ["~> 1.1.7"]
+  s.add_dependency "rubyzip", [">= 1.0"]
+  s.add_dependency "fastercsv", [">= 1.5"]
+  s.add_dependency "i18n-complements", [">= 0"]
   s.add_development_dependency("sqlite3", [">= 0"])
 end
 
