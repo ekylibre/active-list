@@ -18,7 +18,7 @@ module ActiveList
         @options[:confirm] = :are_you_sure if @options[:confirm].is_a?(TrueClass)
         link_options = ""
         if @options[:confirm]
-          link_options << ", 'data-confirm' => #{(@options[:confirm]).inspect}.tl"
+          link_options << ", 'data-confirm' => #{(@options[:confirm]).inspect}.t(scope: 'labels')"
         end
         if @options['data-method'] or @options[:method]
           link_options << ", :method => h('#{(@options['data-method']||@options[:method])}')"
@@ -44,7 +44,7 @@ module ActiveList
           end
           cases = []
           for expected, url in @options[:actions]
-            cases << record+"."+@name.to_s+" == " + expected.inspect + "\nlink_to(content_tag(:i) + h(#{url[:action].inspect}.tl)"+
+            cases << record+"."+@name.to_s+" == " + expected.inspect + "\nlink_to(content_tag(:i) + h(#{url[:action].inspect}.t(scope: 'labels'))"+
               ", {"+(url[:controller] ? 'controller: :'+url[:controller].to_s+', ' : '')+"action: '"+url[:action].to_s+"', id: "+record+".id"+format+"}"+
               ", {:class => '#{@name}'"+link_options+"}"+
               ")\n"
@@ -59,7 +59,7 @@ module ActiveList
           url.delete_if{|k, v| v.nil?}
           url = "{" + url.collect{|k, v| "#{k}: " + urlify(v, record)}.join(", ")+format+"}"
           code = "{class: '#{@name}'"+link_options+"}"
-          code = "link_to(content_tag(:i) + h('#{action}'.tl), "+url+", "+code+")"
+          code = "link_to(content_tag(:i) + h('#{action}'.t(scope: 'labels')), "+url+", "+code+")"
         end
         if @options[:if]
           code = "if " + recordify!(@options[:if], record) + "\n" + code.dig + "end"

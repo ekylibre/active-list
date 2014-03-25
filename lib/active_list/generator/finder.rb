@@ -9,7 +9,7 @@ module ActiveList
       # Check order
       unless @table.options.keys.include?(:order)
         columns = @table.table_columns
-        @table.options[:order] = (columns.size > 0 ? columns.first.name.to_s : "#{@table.model.table_name}.id DESC")
+        @table.options[:order] = (columns.size > 0 ? columns.first.name.to_sym : {id: :desc}) # "#{@table.model.table_name}.id DESC"
       end
 
       class_name = @table.model.name
