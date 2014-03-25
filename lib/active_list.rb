@@ -1,6 +1,7 @@
 require 'csv'
 require 'action_dispatch'
 require 'rails'
+require 'compass-rails'
 
 module ActiveList
 
