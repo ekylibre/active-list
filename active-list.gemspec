@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
     " provide clean tables."
   s.extra_rdoc_files = [ "LICENSE", "README.rdoc" ]
 
-  s.files = `git ls-files app lib VERSION LICENSE README.rdoc`.split("\n")
+  s.files = `git ls-files app lib locales VERSION LICENSE README.rdoc`.split("\n")
   s.homepage = "http://github.com/burisu/active-list"
   s.license = "MIT"
   s.require_path = "lib"
