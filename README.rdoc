@@ -1,46 +1,5 @@
 = ActiveList
-{<img src="https://badge.fury.io/rb/active_list.png" alt="Gem Version" />}[http://badge.fury.io/rb/active_list]
-{<img src="https://api.travis-ci.org/burisu/active_list.png?branch=master"/>}[https://travis-ci.org/burisu/active_list]
-{<img src="https://gemnasium.com/burisu/active_list.png"/>}[https://gemnasium.com/burisu/active_list]
-{<img src="https://codeclimate.com/github/burisu/active_list.png" />}[https://codeclimate.com/github/burisu/active_list]
-{<img src="https://coveralls.io/repos/burisu/active_list/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/burisu/active_list]
 
-ActiveList is a simple list widget. It permits to create a controller 
-method and view helper to displays lists.
+ActiveList (as "active-list") is not used anymore. It's a transitional gem to use gem active_list ≥ 6.
 
-The first need was to have a simple component to build easily HTML 
-tables. No scaffolds, only listings.
-
-ActiveList works only with Rails ≥ 3.1.
-
-ActiveList works only with Ruby ≥ 1.9 since v4.2.0.
-
-
-== Quick start
-
-First, the JS code must be added to the pipeline in app/assets/javascripts/application.js:
-
-    //= require active_list.jquery
-
-And for style, you can add in app/assets/stylesheets/application.css:
-
-    *= require active_list
-
-The simple way to use it is to write in our controller:
-  
-    class PeopleController < ApplicationController
-      list
-
-      def index
-      end
-    end
-
-And in the view app/views/people/index.html.erb:
-
-    <%= list -%>
-
-== License
-
-ActiveList is released under the MIT license:
-
-* http://www.opensource.org/licenses/MIT
+The new repository is: http://github.com/burisu/active_list.

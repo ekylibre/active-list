@@ -1,7 +1,0 @@
-@import "active_list/minimal";
-@import "active_list/background";
-@import "active_list/theme";
-
-.active-list[data-list-source], .active-list { 
-  @include active-list-theme;
-}
