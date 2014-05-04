@@ -5,7 +5,7 @@ class TableTest < ActiveSupport::TestCase
   # mock_app
 
   def test_columns
-    table = ActiveList::Table.new(:contacts)
+    table = ActiveList::Definition::Table.new(:contacts)
     assert_equal 0, table.columns.size
 
     table.column :address

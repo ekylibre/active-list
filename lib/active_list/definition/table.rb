@@ -126,7 +126,7 @@ module ActiveList
             columns = reflection.class_name.constantize.columns.collect{ |c| c.name.to_s }
             self.column([:label, :name, :code, :number].detect{ |l| columns.include?(l.to_s) }, :through => reflection.name, :url => true)
           else
-            self.column(column.name)
+            self.column(column.name.to_sym)
           end
         end
         return true

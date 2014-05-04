@@ -1,4 +1,9 @@
 = ActiveList
+{<img src="https://badge.fury.io/rb/active_list.png" alt="Gem Version" />}[http://badge.fury.io/rb/active_list]
+{<img src="https://api.travis-ci.org/burisu/active_list.png?branch=master"/>}[https://travis-ci.org/burisu/active_list]
+{<img src="https://gemnasium.com/burisu/active_list.png"/>}[https://gemnasium.com/burisu/active_list]
+{<img src="https://codeclimate.com/github/burisu/active_list.png" />}[https://codeclimate.com/github/burisu/active_list]
+{<img src="https://coveralls.io/repos/burisu/active_list/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/burisu/active_list]
 
 ActiveList is a simple list widget. It permits to create a controller 
 method and view helper to displays lists.
@@ -15,11 +20,11 @@ ActiveList works only with Ruby ≥ 1.9 since v4.2.0.
 
 First, the JS code must be added to the pipeline in app/assets/javascripts/application.js:
 
-    //= require active-list.jquery
+    //= require active_list.jquery
 
-And get a better, you can add in app/assets/stylesheets/application.css:
+And for style, you can add in app/assets/stylesheets/application.css:
 
-    *= require active-list
+    *= require active_list
 
 The simple way to use it is to write in our controller:
   
@@ -32,9 +37,7 @@ The simple way to use it is to write in our controller:
 
 And in the view app/views/people/index.html.erb:
 
-    <%=list-%>
-
-== Build Status {<img src="https://secure.travis-ci.org/burisu/active-list.png"/>}[http://travis-ci.org/burisu/active-list]
+    <%= list -%>
 
 == License
 

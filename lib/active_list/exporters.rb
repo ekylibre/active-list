@@ -13,16 +13,5 @@ module ActiveList
     autoload :ExcelCsvExporter,                'active_list/exporters/excel_csv_exporter'
   end
 
-  mattr_reader :exporters
-  @@exporters = {}
-
-  def self.register_exporter(name, exporter)
-    raise ArgumentError.new("ActiveList::Exporters::AbstractExporter expected (got #{exporter.name}/#{exporter.ancestors.inspect})") unless exporter < ActiveList::Exporters::AbstractExporter
-    @@exporters[name] = exporter
-  end
-
 end
 
-ActiveList.register_exporter(:ods,  ActiveList::Exporters::OpenDocumentSpreadsheetExporter)
-ActiveList.register_exporter(:csv,  ActiveList::Exporters::CsvExporter)
-ActiveList.register_exporter(:xcsv, ActiveList::Exporters::ExcelCsvExporter)
